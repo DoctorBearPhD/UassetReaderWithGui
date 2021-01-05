@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UassetReaderWithGui", "UassetReaderWithGui\UassetReaderWithGui.csproj", "{39EC5338-4A0B-48DC-ABEA-376E5B759DF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UassetLib", "..\UassetLib\UassetLib\UassetLib.csproj", "{91C5058C-7030-4C12-B770-E95C78F155BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{39EC5338-4A0B-48DC-ABEA-376E5B759DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39EC5338-4A0B-48DC-ABEA-376E5B759DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39EC5338-4A0B-48DC-ABEA-376E5B759DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C5058C-7030-4C12-B770-E95C78F155BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C5058C-7030-4C12-B770-E95C78F155BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C5058C-7030-4C12-B770-E95C78F155BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C5058C-7030-4C12-B770-E95C78F155BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

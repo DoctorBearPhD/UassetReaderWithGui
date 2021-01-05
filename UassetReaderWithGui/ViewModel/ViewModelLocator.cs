@@ -39,6 +39,7 @@ namespace UassetReaderWithGui.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<GuiViewModel>();
         }
 
         /// <summary>
@@ -47,13 +48,9 @@ namespace UassetReaderWithGui.ViewModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
+        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public GuiViewModel Gui => ServiceLocator.Current.GetInstance<GuiViewModel>();
 
         /// <summary>
         /// Cleans up all the resources.
