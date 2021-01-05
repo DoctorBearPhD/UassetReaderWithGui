@@ -43,7 +43,7 @@ namespace UassetReaderWithGui.ViewModel
         {
             _dataService = dataService;
             _dataService.GetData(
-                (item, error) =>
+                (items, error) =>
                 {
                     if (error != null)
                     {
@@ -51,7 +51,7 @@ namespace UassetReaderWithGui.ViewModel
                         return;
                     }
 
-                    WelcomeTitle = item.Title;
+                    WelcomeTitle = items[0]?.Title;
                 });
         }
 
