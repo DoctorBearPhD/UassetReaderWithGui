@@ -11,5 +11,6 @@ namespace UassetReaderWithGui.Model
     {
         void GetData(Action<ObservableCollection<DataItem>, Exception> callback);
         void GetTreeViewData(Action<ObservableCollection<TreeViewItemViewModel>, Exception> callback);
+        void GetStructPropertyData(Action<UassetLib.StructProperty, Exception> callback);
     }
 }

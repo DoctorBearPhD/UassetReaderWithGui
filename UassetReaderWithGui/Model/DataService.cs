@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using UassetLib;
 using UassetReaderWithGui.ViewModel.Controls;
 
 namespace UassetReaderWithGui.Model
@@ -36,6 +37,11 @@ namespace UassetReaderWithGui.Model
 
 
             callback(items, null);
+        }
+
+        public void GetStructPropertyData(Action<StructProperty, Exception> callback)
+        {
+            throw new NotImplementedException();
         }
     }
 }

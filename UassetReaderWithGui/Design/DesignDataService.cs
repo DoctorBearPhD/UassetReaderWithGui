@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UassetLib;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
 
@@ -43,6 +45,23 @@ namespace UassetReaderWithGui.Design
             };
 
             callback(items, null);
+        }
+
+        public void GetStructPropertyData(Action<StructProperty, Exception> callback)
+        {
+            var structProp = new StructProperty();
+            var value = new Dictionary<string, object>
+            {
+                ["Attribute"] = new ArrayProperty()
+                {
+                    PropertyType = typeof(StructProperty).Name,
+                    Items = new ObservableCollection<dynamic> { new StructProperty(), new StructProperty(), new StructProperty() }
+                }
+            };
+
+            structProp.Value = value;
+
+            callback(structProp, null);
         }
     }
 }
