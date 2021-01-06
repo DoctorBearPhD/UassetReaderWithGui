@@ -5,6 +5,7 @@ using System.Linq;
 using UassetLib;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
+using UassetReaderWithGui.ViewModel.Uasset;
 
 namespace UassetReaderWithGui.ViewModel
 {
@@ -20,6 +21,9 @@ namespace UassetReaderWithGui.ViewModel
 
         private ObservableCollection<TreeViewItemViewModel> _treeViewItems;
         public  ObservableCollection<TreeViewItemViewModel>  TreeViewItems { get => _treeViewItems; set => Set(ref _treeViewItems, value); }
+
+        private UassetFileViewModel _uassetFileVM;
+        public  UassetFileViewModel  UassetFileVM { get => _uassetFileVM; set => Set(ref _uassetFileVM, value); }
 
         #endregion
 

@@ -40,6 +40,7 @@ namespace UassetReaderWithGui.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<GuiViewModel>();
+            SimpleIoc.Default.Register<MockGuiViewModel>();
         }
 
         /// <summary>
@@ -51,6 +52,8 @@ namespace UassetReaderWithGui.ViewModel
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public GuiViewModel Gui => ServiceLocator.Current.GetInstance<GuiViewModel>();
+
+        public MockGuiViewModel MockGui => ServiceLocator.Current.GetInstance<MockGuiViewModel>();
 
         /// <summary>
         /// Cleans up all the resources.

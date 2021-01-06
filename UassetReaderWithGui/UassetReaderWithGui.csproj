@@ -85,6 +85,9 @@
     <Compile Include="ViewModel\Controls\TreeViewItemViewModel.cs" />
     <Compile Include="ViewModel\GuiViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MockGuiViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\StringListItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\UassetFileViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\GuiView.xaml.cs">
@@ -93,6 +96,7 @@
     <Compile Include="View\MockGuiView.xaml.cs">
       <DependentUpon>MockGuiView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WpfUtil\Converters\IntToHexStringConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

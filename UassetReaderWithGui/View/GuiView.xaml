@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ignore="http://www.galasoft.ch/ignore"
              mc:Ignorable="d ignore"
-             d:DesignWidth="800" d:DesignHeight="400"
+             d:DesignWidth="1200" d:DesignHeight="400"
              DataContext="{Binding Path=Gui, Source={StaticResource Locator}}">
 
     <UserControl.Resources>
@@ -22,10 +22,22 @@
 
     </UserControl.Resources>
     
-    <Grid>
-        <TreeView ItemsSource="{Binding TreeViewItems}" 
-                  ItemTemplate="{StaticResource treeViewItemTemplate}" 
-                  ItemContainerStyle="{StaticResource treeViewItemStyle}"/>
+    <DockPanel>
+        <Grid DockPanel.Dock="Left" MinWidth="150">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Background="LightGray" Content="String List" />
+            <DataGrid Grid.Row="1" HeadersVisibility="All" />
+        </Grid>
+        
+        <Grid>
+            <TreeView ItemsSource="{Binding TreeViewItems}" 
+                        ItemTemplate="{StaticResource treeViewItemTemplate}" 
+                        ItemContainerStyle="{StaticResource treeViewItemStyle}"/>
 
-    </Grid>
+        </Grid>
+    </DockPanel>
+    
 </UserControl>

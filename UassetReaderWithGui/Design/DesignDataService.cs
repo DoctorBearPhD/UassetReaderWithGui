@@ -157,6 +157,8 @@ VTriggerVFxLists";
             var strings = bigString
                 .Split(new [] { Environment.NewLine }, StringSplitOptions.None )
                 .Select(item => new StringProperty(item));
+
+            callback(new ObservableCollection<StringProperty>(strings), null);
         }
 
         public UassetFile GetUassetFile()
