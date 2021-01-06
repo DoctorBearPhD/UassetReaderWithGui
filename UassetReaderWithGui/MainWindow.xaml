@@ -21,7 +21,7 @@
 
     <Grid x:Name="LayoutRoot">
 
-        <view:GuiView Grid.Row="0"/>
-
+        <!--<view:GuiView Grid.Row="0"/>-->
+        <view:MockGuiView />
     </Grid>
 </Window>

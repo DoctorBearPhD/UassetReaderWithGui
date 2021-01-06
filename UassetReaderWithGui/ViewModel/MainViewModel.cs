@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using UassetLib;
 using UassetReaderWithGui.Model;
 
 namespace UassetReaderWithGui.ViewModel
@@ -13,28 +14,9 @@ namespace UassetReaderWithGui.ViewModel
     {
         private readonly IDataService _dataService;
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        ////private UassetFile _uassetFile;
+        ////public  UassetFile UassetFile { get => _uassetFile; set => Set(ref _uassetFile, value); }
 
-        private string _welcomeTitle = string.Empty;
-
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
-        {
-            get
-            {
-                return _welcomeTitle;
-            }
-            set
-            {
-                Set(ref _welcomeTitle, value);
-            }
-        }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -42,17 +24,6 @@ namespace UassetReaderWithGui.ViewModel
         public MainViewModel(IDataService dataService)
         {
             _dataService = dataService;
-            _dataService.GetData(
-                (items, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
-
-                    WelcomeTitle = items[0]?.Title;
-                });
         }
 
         ////public override void Cleanup()

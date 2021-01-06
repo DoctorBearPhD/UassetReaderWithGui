@@ -85,9 +85,13 @@
     <Compile Include="ViewModel\Controls\TreeViewItemViewModel.cs" />
     <Compile Include="ViewModel\GuiViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\UassetFileViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\GuiView.xaml.cs">
       <DependentUpon>GuiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MockGuiView.xaml.cs">
+      <DependentUpon>MockGuiView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,10 @@
     </Page>
     <Page Include="View\GuiView.xaml">
       <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MockGuiView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

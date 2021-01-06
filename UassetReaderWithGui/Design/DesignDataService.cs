@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UassetLib;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
@@ -9,6 +10,8 @@ namespace UassetReaderWithGui.Design
 {
     public class DesignDataService : IDataService
     {
+        public void SetArg(string arg) { }
+
         public void GetData(Action<ObservableCollection<DataItem>, Exception> callback)
         {
             // Use this to create design time data
@@ -62,6 +65,103 @@ namespace UassetReaderWithGui.Design
             structProp.Value = value;
 
             callback(structProp, null);
+        }
+
+        public void GetStringListData(Action<ObservableCollection<StringProperty>, Exception> callback)
+        {
+            // var bigString = "..."
+            #region String of Strings
+            var bigString = @"/Game/Chara/CMN/DataAsset/DA_CMN_StunAttachment
+/Game/Chara/CMN/Skeleton/AnimBlueprint/KAB_CMN
+/Game/Chara/KEN/DA_KEN_Setup
+/Game/Chara/KEN/DataAsset/DA_KEN_AnimSeqWithIdContainer
+/Game/Chara/KEN/DataAsset/DA_KEN_PSListContainer
+/Game/Chara/KEN/DataAsset/DA_KEN_SoundPath
+/Game/Chara/KEN/DataAsset/DA_KEN_Subtitle
+/Game/Chara/KEN/DataAsset/DA_KEN_TrailList
+/Game/Chara/KEN/SkelMesh/Common/Mesh/KEN_SKL
+/Game/Chara/RYU/BlendSpace/BS_RYU_AIM_EYE
+/Game/Chara/RYU/BlendSpace/BS_RYU_AIM_HEAD
+/Game/Sound/BGM/TransitionRules/DA_CMN_BGMTransitionRule
+/Script/CoreUObject
+/Script/Engine
+/Script/KiwiChara
+/Script/KiwiGame
+/Script/KiwiVfx
+AimEye
+AimHead
+AimOffsetBlendSpace
+AnimBlueprint
+AnimSequenceList
+ArrayProperty
+BGMs
+BoneSkeltalMesh
+BS_RYU_AIM_EYE
+BS_RYU_AIM_HEAD
+ByteProperty
+Class
+costume_offset
+CreateVfxID
+CueSheet
+DA_CMN_BGMTransitionRule
+DA_CMN_StunAttachment
+DA_KEN_AnimSeqWithIdContainer
+DA_KEN_PSListContainer
+DA_KEN_Setup
+DA_KEN_SoundPath
+DA_KEN_Subtitle
+DA_KEN_TrailList
+EKWBGM
+EKWBGM::BattleMain
+id
+IntProperty
+KAB_CMN
+KEN_SKL
+KWAnimSequenceWithIdListContainerDataAsset
+KWBattleBGMTransitionDataAsset
+KWBattleCharaSetupDataAsset
+KWCharaSoundEntryDataAsset
+KWParticleSystemListContainerDataAsset
+KWStunAttachmentDataAsset
+KWSubtitleDataAsset
+KWTrailDataListAsset
+mesh_id
+MirrorType
+node_local_offset
+node_local_rotation
+None
+ObjectProperty
+Package
+ParticleSystemList
+Rotator
+SetNodeID
+SettingMirrorType
+SettingMirrorType::NONE
+SettingVFxKind
+SettingVFxKind::FOLLOW_NODE_ROT
+SkeletalMesh
+Slot
+SoundResource
+StringAssetReference
+StructProperty
+StunAttachment
+SubtitleData
+TrailDataListAsset
+TransitionSetting
+Vector
+VfxKind
+VfxList
+VTriggerVFxLists";
+            #endregion
+
+            var strings = bigString
+                .Split(new [] { Environment.NewLine }, StringSplitOptions.None )
+                .Select(item => new StringProperty(item));
+        }
+
+        public UassetFile GetUassetFile()
+        {
+            throw new NotImplementedException();
         }
     }
 }

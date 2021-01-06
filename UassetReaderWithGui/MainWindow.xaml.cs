@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel;
 
 namespace UassetReaderWithGui
@@ -16,33 +17,22 @@ namespace UassetReaderWithGui
         public string TEMP_FILEPATH => executingAssembly + "/test_stuff/" + tempFileName + ".uasset";
 #endif
 
-        /// <summary>
-        /// Initializes a new instance of the MainWindow class.
-        /// </summary>
-        public MainWindow()
-        {
-            InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
-        }
 
         /// <summary>
-        /// Initializes a new instance of the MainWindow class with an argument passed.
+        /// Initializes a new instance of the MainWindow class with or without an argument passed.
         /// </summary>
         public MainWindow(string arg = "")
         {
-            InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
-
 #if DEBUG
             if (arg == "") arg = TEMP_FILEPATH;
 #else
             if (arg == "") return;
 #endif
+            // Pass the starting arg to the data service.
+            GalaSoft.MvvmLight.Ioc.SimpleIoc.Default.GetInstance<IDataService>().SetArg(arg);
 
-            BinaryReader br = new BinaryReader(File.OpenRead(arg));
-
-            var file = new UassetLib.UassetFile();
-            file.ReadUasset(ref br);
+            InitializeComponent();
+            Closing += (s, e) => ViewModelLocator.Cleanup();
         }
     }
 }
