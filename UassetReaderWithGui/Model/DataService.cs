@@ -58,16 +58,16 @@ namespace UassetReaderWithGui.Model
             throw new NotImplementedException();
         }
 
-        public UassetFile GetUassetFile()
+        public void GetUassetFile(Action<UassetFile, Exception> callback)
         {
-            if (uassetFile != null) return uassetFile;
+            if (uassetFile != null) callback(uassetFile, null);
 
             BinaryReader br = new BinaryReader(File.OpenRead(startingArg));
 
             uassetFile = new UassetFile();
             uassetFile.ReadUasset(ref br);
 
-            return uassetFile;
+            callback(uassetFile, null);
         }
     }
 }

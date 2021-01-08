@@ -38,9 +38,9 @@ namespace UassetReaderWithGui.ViewModel
                 SimpleIoc.Default.Register<IDataService, DataService>();
             }
 
-            SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<GuiViewModel>();
             SimpleIoc.Default.Register<MockGuiViewModel>();
+            SimpleIoc.Default.Register<GuiViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>();
         }
 
         /// <summary>

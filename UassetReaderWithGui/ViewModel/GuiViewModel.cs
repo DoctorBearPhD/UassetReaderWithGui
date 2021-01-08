@@ -25,10 +25,13 @@ namespace UassetReaderWithGui.ViewModel
         private UassetFileViewModel _uassetFileVM;
         public  UassetFileViewModel  UassetFileVM { get => _uassetFileVM; set => Set(ref _uassetFileVM, value); }
 
+        private ObservableCollection<StringListItemViewModel> _stringList;
+        public ObservableCollection<StringListItemViewModel> StringList { get => _stringList; set => Set(ref _stringList, value); }
+
         #endregion
 
 
-        public IDataService ItemsDataService;
+        public IDataService _dataService;
 
 
         /// <summary>
@@ -36,6 +39,8 @@ namespace UassetReaderWithGui.ViewModel
         /// </summary>
         public GuiViewModel(IDataService dataService)
         {
+            _dataService = dataService;
+
             ////dataService.GetData(
             ////    (di, ex) => {
             ////        TreeViewItems = new ObservableCollection<TreeViewItemViewModel>(
@@ -51,54 +56,31 @@ namespace UassetReaderWithGui.ViewModel
 
             // TODO: Get all parts of the UassetFile and show them.
 
-            // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
-            /*
-                private const int BYTE_GROUP_SIZE = 4;
-
-                private const int LOC_PTR_CONTENT = 0x18;
-                private const int LOC_PTR_FOOTER   = 0x93;
-
-                public ObservableCollection<StringProperty> StringList { get; set; }
-                public DeclarationBlock Declaration { get; set; }
-                public UnknownList1Block UnknownList1 { get; set; } // Content metadata?
-                public ImportBlock Imports { get; set; }
-                public UkDepends UkDepends { get; set; }
-                // public __?__ UkLoads { get; set; }
-
-                public StructProperty ContentStruct { get; set; }
-
-                public long PtrFooter;
-                public long PtrNoneString;
-                public long NoneIndex;
-
-                public int PreContentSize; // alternatively, pointer to start of content
-                public int Unknown1;
-                public int StringListCount;
-                public int StringListPtr;
-                public int UnknownList1Count;
-                public int UnknownList1Ptr;
-                public int DeclareCount;
-                public int DeclarePtr;
-                public int ImportsListPtr;
-                public int UkDependsCount;
-                public long UkDependsPtr;
-                public int ContentCount;
-                public int Unknown2;
-                public long UnknownPtrLocation;
-                public int UnknownPtr;
-
-                public byte[] Checksum;
-                public byte[] FooterBytes;
-             */
 
 
 
-            dataService.GetStructPropertyData(
-                (prop, ex) =>
-                {
-                    TreeViewItems = GetTreeViewItems(prop);
-                }
-            );
+            //dataService.GetStructPropertyData(
+            //    (prop, ex) =>
+            //    {
+            //        TreeViewItems = GetTreeViewItems(prop);
+            //    }
+            //);
+
+            //_dataService = SimpleIoc.Default.GetInstance<IDataService>();
+
+            _dataService.GetStringListData(SetStringList);
+        }
+
+        private void SetStringList(ObservableCollection<StringProperty> stringProperties, Exception ex)
+        {
+            StringList = new ObservableCollection<StringListItemViewModel>();
+
+            StringProperty prop;
+            for (var i = 0; i < stringProperties.Count; i++)
+            {
+                prop = stringProperties[i];
+                StringList.Add(new StringListItemViewModel(prop, i));
+            }
         }
 
         public ObservableCollection<TreeViewItemViewModel> GetTreeViewItems(UassetProperty prop)

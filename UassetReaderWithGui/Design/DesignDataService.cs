@@ -161,9 +161,23 @@ VTriggerVFxLists";
             callback(new ObservableCollection<StringProperty>(strings), null);
         }
 
-        public UassetFile GetUassetFile()
+        public void GetUassetFile(Action<UassetFile, Exception> callback)
         {
-            throw new NotImplementedException();
+            var uf = new UassetFile();
+
+            GetStringListData( (list, ex) => { uf.StringList = list; } );
+            uf.StringListCount = uf.StringList.Count;
+            uf.PreContentSize = 0xBA9;
+
+            uf.PtrNoneString =      0x025;
+            uf.DeclarePtr =         0x85F;
+            uf.UnknownList1Ptr =    0xAFF;
+            uf.ImportsListPtr =     0xB43;
+            uf.UkDependsPtr =       0xB73;
+            uf.UnknownPtr =         0xBA5;
+            uf.PtrFooter =          0x1093;
+
+            callback(uf, null);
         }
     }
 }

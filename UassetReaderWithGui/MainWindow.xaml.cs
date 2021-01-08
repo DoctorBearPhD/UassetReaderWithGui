@@ -14,10 +14,10 @@ namespace UassetReaderWithGui
         public string executingAssembly = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         public string tempFileName = 
             "DA_KEN_Setup";
-        public string TEMP_FILEPATH => executingAssembly + "/test_stuff/" + tempFileName + ".uasset";
+        public string TEMP_FILEPATH => executingAssembly + "\\test_stuff\\" + tempFileName + ".uasset";
 #endif
 
-
+        
         /// <summary>
         /// Initializes a new instance of the MainWindow class with or without an argument passed.
         /// </summary>
@@ -28,8 +28,9 @@ namespace UassetReaderWithGui
 #else
             if (arg == "") return;
 #endif
-            // Pass the starting arg to the data service.
-            GalaSoft.MvvmLight.Ioc.SimpleIoc.Default.GetInstance<IDataService>().SetArg(arg);
+            
+            var vmLocator = App.Current.Resources["Locator"] as ViewModelLocator; // manually initialize the ViewModelLocator, or else it isn't loaded when we need it
+            GalaSoft.MvvmLight.Ioc.SimpleIoc.Default.GetInstance<IDataService>().SetArg(arg); // pass starting arg to the DataService so it can get the file when asked
 
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();

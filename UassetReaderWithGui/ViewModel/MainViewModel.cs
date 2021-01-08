@@ -14,6 +14,7 @@ namespace UassetReaderWithGui.ViewModel
     {
         private readonly IDataService _dataService;
 
+
         ////private UassetFile _uassetFile;
         ////public  UassetFile UassetFile { get => _uassetFile; set => Set(ref _uassetFile, value); }
 

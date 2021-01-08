@@ -14,7 +14,7 @@ namespace UassetReaderWithGui.Model
         /// If a UassetFile was already created, returns that instead of reading a new one.
         /// </summary>
         /// <returns>The previously read UassetFile or a new one by reading the file at the startingArg path.</returns>
-        UassetLib.UassetFile GetUassetFile();
+        void GetUassetFile(Action<UassetLib.UassetFile, Exception> callback);
 
         void SetArg(string arg);
 

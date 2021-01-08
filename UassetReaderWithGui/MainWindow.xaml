@@ -6,8 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Height="500"
-        Width="800"
+        Height="600"
+        Width="1200"
         Title="Uasset Reader"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     
