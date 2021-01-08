@@ -7,7 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UassetReaderWithGui.View"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1000"
+             d:DesignHeight="600" d:DesignWidth="1200"
              DataContext="{Binding Path=MockGui, Source={StaticResource Locator}}">
 
     <UserControl.Resources>
@@ -33,6 +33,8 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="Auto" />
@@ -133,11 +135,38 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            
+            <GridSplitter Grid.Column="3" Grid.RowSpan="99" />
+
+            <Label Content="Declaration Block" Grid.Column="4" Grid.Row="0" />
+            <DataGrid ItemsSource="{Binding Path=UassetFileVM.DeclarationBlock.Items}" Grid.Column="4" Grid.Row="1"
+                      AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Namespace?" Binding="{Binding Namespace}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                    <DataGridTextColumn Header="Depends" Binding="{Binding Depends}" />
+                    <DataGridTextColumn Header="Item6" Binding="{Binding Item6}" />
+                    <DataGridTemplateColumn Header="Items">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock ToolTipService.ToolTip="All items except item 4 are in hex form.">
+                                <TextBlock Text="{Binding Items[0], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[1], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[2], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[3], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[4]}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[5], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                <TextBlock Text="{Binding Items[6], Converter={StaticResource int2HexConv}}" />
+                            </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
-        
-        
-        
     </DockPanel>
 
 </UserControl>

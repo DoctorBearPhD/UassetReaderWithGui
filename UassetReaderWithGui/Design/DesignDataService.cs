@@ -177,6 +177,8 @@ VTriggerVFxLists";
             uf.UnknownPtr =         0xBA5;
             uf.PtrFooter =          0x1093;
 
+            uf.Declaration = new DeclarationBlock { Items = new List<DeclarationItem> { new DeclarationItem { Id = 1, Namespace = "Namespace?", Name = "Name!", Depends = 10, @Type = "Type?!", Item6 = 99, Items = new int[] { 1,2,3,4,5,6,7 } } } };
+
             callback(uf, null);
         }
     }
