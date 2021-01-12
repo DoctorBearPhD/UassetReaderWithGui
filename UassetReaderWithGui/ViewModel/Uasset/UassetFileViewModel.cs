@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UassetLib;
 
@@ -51,11 +52,12 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         private ObservableCollection<UnknownList1ItemViewModel> _UnknownList1;
         public  ObservableCollection<UnknownList1ItemViewModel>  UnknownList1 { get => _UnknownList1; set => Set(ref _UnknownList1, value); }
 
+        private ObservableCollection<ImportBlockItemViewModel> _ImportBlock;
+        public  ObservableCollection<ImportBlockItemViewModel>  ImportBlock { get => _ImportBlock; set => Set(ref _ImportBlock, value); }
+
 
         // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
         /*
-            public UnknownList1Block UnknownList1 { get; set; } // Content metadata?
-            public ImportBlock Imports { get; set; }
             public UkDepends UkDepends { get; set; }
             // public __?__ UkLoads { get; set; }
 
@@ -95,6 +97,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset
 
             DeclarationBlock = new DeclarationBlockViewModel(uf.Declaration);
             SetUnknownList1(uf.UnknownList1);
+            SetImportBlock(uf.Imports, uf.StringList);
         }
 
         private void SetStringList(ObservableCollection<StringProperty> stringProperties)
@@ -116,6 +119,16 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             foreach (var item in list.Items)
             {
                 UnknownList1.Add(new UnknownList1ItemViewModel(item));
+            }
+        }
+
+        private void SetImportBlock(ImportBlock imports, ObservableCollection<StringProperty> stringList)
+        {
+            ImportBlock = new ObservableCollection<ImportBlockItemViewModel>();
+
+            foreach (var item in imports.Items)
+            {
+                ImportBlock.Add(new ImportBlockItemViewModel(item, stringList));
             }
         }
     }

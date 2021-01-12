@@ -179,6 +179,7 @@ VTriggerVFxLists";
 
             uf.Declaration = new DeclarationBlock { Items = new List<DeclarationItem> { new DeclarationItem { Id = 1, Namespace = "Namespace?", Name = "Name!", Depends = 10, @Type = "Type?!", Item6 = 99, Items = new int[] { 1,2,3,4,5,6,7 } } } };
             uf.UnknownList1 = new UnknownList1Block { Items = new List<UnknownList1Item> { new UnknownList1Item { Id = 3, Name = "Name Example", Namespace = "Namespace Example", Size = 9999, PtrToContent = 0x6969 } } };
+            uf.Imports = new ImportBlock { Items = new List<int> { 6, 9, 5, 2, 4, 1, 0, 10, 8, 23, 7 } };
 
             callback(uf, null);
         }

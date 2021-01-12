@@ -142,72 +142,92 @@
             <GridSplitter Grid.Column="3" Grid.RowSpan="99" />
 
             <!-- Declaration and UnknownList1 -->
-            <Grid Grid.Column="4" Grid.Row="0" Grid.RowSpan="99">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <ScrollViewer Grid.Column="4" Grid.Row="0" Grid.RowSpan="99" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                 
-                <DockPanel Grid.Column="0" Grid.Row="0">
-                    <Label DockPanel.Dock="Top">
-                        <TextBlock>
-                            <Run Text="Declaration Block (" />
-                            <TextBlock Text="{Binding Path=UassetFileVM.DeclarationBlock.Items.Count}" />
-                            <Run>//</Run>
-                            <TextBlock Text="{Binding Path=UassetFileVM.DeclarationBlock.Items.Count, Converter={StaticResource int2FormattedHexConv}}" />
-                            <Run>)</Run>
-                        </TextBlock>
-                    </Label>
-                    <DataGrid ItemsSource="{Binding Path=UassetFileVM.DeclarationBlock.Items}"
-                              AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="Namespace" Binding="{Binding Namespace}" />
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
-                            <DataGridTextColumn Header="Depends" Binding="{Binding Depends}" />
-                            <DataGridTextColumn Header="Item6" Binding="{Binding Item6}" />
-                            <DataGridTemplateColumn Header="Items">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock ToolTipService.ToolTip="All items except item 4 are in hex form.">
-                                        <TextBlock Text="{Binding Items[0], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[1], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[2], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[3], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[4]}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[5], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
-                                        <TextBlock Text="{Binding Items[6], Converter={StaticResource int2HexConv}}" />
-                                    </TextBlock>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </DockPanel>
+                    <DockPanel Grid.Column="0" Grid.Row="0">
+                        <Label DockPanel.Dock="Top">
+                            <TextBlock>
+                                <Run Text="Declaration Block (" />
+                                <TextBlock Text="{Binding Path=UassetFileVM.DeclarationBlock.Items.Count}" />
+                                <Run>//</Run>
+                                <TextBlock Text="{Binding Path=UassetFileVM.DeclarationBlock.Items.Count, Converter={StaticResource int2FormattedHexConv}}" />
+                                <Run>)</Run>
+                            </TextBlock>
+                        </Label>
+                        <DataGrid ItemsSource="{Binding Path=UassetFileVM.DeclarationBlock.Items}"
+                                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Namespace" Binding="{Binding Namespace}" />
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                                <DataGridTextColumn Header="Depends" Binding="{Binding Depends}" />
+                                <DataGridTextColumn Header="Item6" Binding="{Binding Item6}" />
+                                <DataGridTemplateColumn Header="Items">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock ToolTipService.ToolTip="All items except item 4 are in hex form.">
+                                            <TextBlock Text="{Binding Items[0], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[1], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[2], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[3], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[4]}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[5], Converter={StaticResource int2HexConv}}" /><Run Text=", " />
+                                            <TextBlock Text="{Binding Items[6], Converter={StaticResource int2HexConv}}" />
+                                        </TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
                 
 
-                <GridSplitter Grid.Column="0" Grid.Row="1" BorderThickness="0,1" />
+                    <GridSplitter Grid.Column="0" Grid.Row="1" BorderThickness="0,1" />
 
-                <DockPanel Grid.Column="0" Grid.Row="2">
-                    <Label Content="Unknown List 1 (Content Metadata?)" DockPanel.Dock="Top" />
-                    <DataGrid ItemsSource="{Binding Path=UassetFileVM.UnknownList1}" 
-                              AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Namespace" Binding="{Binding Namespace}" />
-                            <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
-                            <DataGridTextColumn Header="Pointer to Content" Binding="{Binding PtrToContent, Converter={StaticResource int2FormattedHexConv}}" />
-                        </DataGrid.Columns>
-                    </DataGrid>    
-                </DockPanel>
+                    <DockPanel Grid.Column="0" Grid.Row="2">
+                        <Label Content="Unknown List 1 (Content Metadata?)" DockPanel.Dock="Top" />
+                        <DataGrid ItemsSource="{Binding Path=UassetFileVM.UnknownList1}" 
+                                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                                <DataGridTextColumn Header="Namespace" Binding="{Binding Namespace}" />
+                                <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
+                                <DataGridTextColumn Header="Pointer to Content" Binding="{Binding PtrToContent, Converter={StaticResource int2FormattedHexConv}}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
                 
-            </Grid>
+                </Grid>
+            </ScrollViewer>
+            
 
             <GridSplitter Grid.Column="5" Grid.RowSpan="99" />
+
+            <Label Grid.Column="6" Grid.Row="0">
+                <TextBlock>
+                    <Run Text="Import Block (" />
+                    <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count}" />
+                    <Run>//</Run>
+                    <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count, Converter={StaticResource int2FormattedHexConv}}" />
+                    <Run>)</Run>
+                </TextBlock>
+            </Label>
+            <DataGrid ItemsSource="{Binding Path=UassetFileVM.ImportBlock}" Grid.Column="6" Grid.Row="1"
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding ItemAsInt, Converter={StaticResource int2FormattedHexConv}}" />
+                    <DataGridTextColumn Header="StringList Value" Binding="{Binding ItemAsString}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
     </DockPanel>

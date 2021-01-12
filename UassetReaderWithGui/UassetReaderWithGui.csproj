@@ -89,6 +89,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MockGuiViewModel.cs" />
     <Compile Include="ViewModel\Uasset\DeclarationBlockViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\ImportBlockItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\StringListItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\UassetFileViewModel.cs" />
