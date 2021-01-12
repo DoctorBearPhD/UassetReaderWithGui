@@ -92,6 +92,7 @@
     <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\StringListItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\UassetFileViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\UnknownList1ItemViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\GuiView.xaml.cs">
       <DependentUpon>GuiView.xaml</DependentUpon>
@@ -99,6 +100,7 @@
     <Compile Include="View\MockGuiView.xaml.cs">
       <DependentUpon>MockGuiView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WpfUtil\Converters\IntToHexFormattedStringConverter.cs" />
     <Compile Include="WpfUtil\Converters\IntToHexStringConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -48,6 +48,10 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         private DeclarationBlockViewModel _DeclarationBlock;
         public  DeclarationBlockViewModel  DeclarationBlock { get => _DeclarationBlock; set => Set(ref _DeclarationBlock, value); }
 
+        private ObservableCollection<UnknownList1ItemViewModel> _UnknownList1;
+        public  ObservableCollection<UnknownList1ItemViewModel>  UnknownList1 { get => _UnknownList1; set => Set(ref _UnknownList1, value); }
+
+
         // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
         /*
             public UnknownList1Block UnknownList1 { get; set; } // Content metadata?
@@ -75,7 +79,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             
 
          */
-        
+
         public UassetFileViewModel(UassetFile uf)
         {
             SetStringList(uf.StringList);
@@ -90,6 +94,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             PtrFooter = (int)uf.PtrFooter;
 
             DeclarationBlock = new DeclarationBlockViewModel(uf.Declaration);
+            SetUnknownList1(uf.UnknownList1);
         }
 
         private void SetStringList(ObservableCollection<StringProperty> stringProperties)
@@ -101,6 +106,16 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             {
                 prop = stringProperties[i];
                 StringList.Add(new StringListItemViewModel(prop, i));
+            }
+        }
+
+        private void SetUnknownList1(UnknownList1Block list)
+        {
+            UnknownList1 = new ObservableCollection<UnknownList1ItemViewModel>();
+
+            foreach (var item in list.Items)
+            {
+                UnknownList1.Add(new UnknownList1ItemViewModel(item));
             }
         }
     }
