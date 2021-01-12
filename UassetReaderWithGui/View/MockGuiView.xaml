@@ -26,8 +26,8 @@
 
     </UserControl.Resources>
 
-    <DockPanel>
-        <Grid DockPanel.Dock="Left" MinWidth="150">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+        <Grid DockPanel.Dock="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
@@ -59,7 +59,7 @@
             </Grid.Resources>
 
             <!-- StringList -->
-            <Label Grid.Column="0" Grid.Row="0" >
+            <Label Grid.Column="0" Grid.Row="0" MinWidth="150">
                 <TextBlock>
                     <Run Text="String List (" />
                     <TextBlock Text="{Binding Path=UassetFileVM.StringList.Count}" />
@@ -148,7 +148,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="5" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition />
                     </Grid.RowDefinitions>
                 
                     <DockPanel Grid.Column="0" Grid.Row="0">
@@ -209,27 +208,61 @@
                 </Grid>
             </ScrollViewer>
             
-
             <GridSplitter Grid.Column="5" Grid.RowSpan="99" />
 
-            <Label Grid.Column="6" Grid.Row="0">
-                <TextBlock>
-                    <Run Text="Import Block (" />
-                    <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count}" />
-                    <Run>//</Run>
-                    <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count, Converter={StaticResource int2FormattedHexConv}}" />
-                    <Run>)</Run>
-                </TextBlock>
-            </Label>
-            <DataGrid ItemsSource="{Binding Path=UassetFileVM.ImportBlock}" Grid.Column="6" Grid.Row="1"
-                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding ItemAsInt, Converter={StaticResource int2FormattedHexConv}}" />
-                    <DataGridTextColumn Header="StringList Value" Binding="{Binding ItemAsString}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <!-- Imports and UkDepends -->
+            <ScrollViewer Grid.Column="6" Grid.Row="0" Grid.RowSpan="99" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="7" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel Grid.Column="0" Grid.Row="0">
+                        <Label DockPanel.Dock="Top">
+                            <TextBlock>
+                                <Run Text="Import Block (" />
+                                <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count}" />
+                                <Run>//</Run>
+                                <TextBlock Text="{Binding Path=UassetFileVM.ImportBlock.Count, Converter={StaticResource int2FormattedHexConv}}" />
+                                <Run>)</Run>
+                            </TextBlock>
+                        </Label>
+                        <DataGrid ItemsSource="{Binding Path=UassetFileVM.ImportBlock}" Grid.Column="6" Grid.Row="1"
+                              AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding ItemAsInt, Converter={StaticResource int2FormattedHexConv}}" />
+                                <DataGridTextColumn Header="StringList Value" Binding="{Binding ItemAsString}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+
+                    <GridSplitter Grid.Column="0" Grid.Row="1" BorderThickness="0,1" BorderBrush="Gray" />
+
+                    <DockPanel Grid.Column="0" Grid.Row="2">
+                        <Label DockPanel.Dock="Top">
+                            <TextBlock>
+                                <Run Text="UkDepends (" />
+                                <TextBlock Text="{Binding Path=UassetFileVM.UkDepends.Count}" />
+                                <Run>//</Run>
+                                <TextBlock Text="{Binding Path=UassetFileVM.UkDepends.Count, Converter={StaticResource int2FormattedHexConv}}" />
+                                <Run>)</Run>
+                            </TextBlock>
+                        </Label>
+                        <DataGrid ItemsSource="{Binding Path=UassetFileVM.UkDepends}" Grid.Column="6" Grid.Row="1"
+                              AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Value" Binding="{Binding}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    
+                </Grid>
+            </ScrollViewer>
+            
         </Grid>
 
-    </DockPanel>
+    </ScrollViewer>
 
 </UserControl>

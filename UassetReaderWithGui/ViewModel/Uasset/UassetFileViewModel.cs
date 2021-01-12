@@ -55,10 +55,12 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         private ObservableCollection<ImportBlockItemViewModel> _ImportBlock;
         public  ObservableCollection<ImportBlockItemViewModel>  ImportBlock { get => _ImportBlock; set => Set(ref _ImportBlock, value); }
 
+        private ObservableCollection<string> _UkDepends;
+        public  ObservableCollection<string>  UkDepends { get => _UkDepends; set => Set(ref _UkDepends, value); }
+
 
         // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
         /*
-            public UkDepends UkDepends { get; set; }
             // public __?__ UkLoads { get; set; }
 
             public StructProperty ContentStruct { get; set; }
@@ -98,6 +100,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             DeclarationBlock = new DeclarationBlockViewModel(uf.Declaration);
             SetUnknownList1(uf.UnknownList1);
             SetImportBlock(uf.Imports, uf.StringList);
+            SetUkDepends(uf.UkDepends);
         }
 
         private void SetStringList(ObservableCollection<StringProperty> stringProperties)
@@ -129,6 +132,16 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             foreach (var item in imports.Items)
             {
                 ImportBlock.Add(new ImportBlockItemViewModel(item, stringList));
+            }
+        }
+
+        private void SetUkDepends(UkDepends ukDepends)
+        {
+            UkDepends = new ObservableCollection<string>();
+
+            foreach (var item in ukDepends.Items)
+            {
+                UkDepends.Add(System.Text.Encoding.UTF8.GetString(item, 0, item.Length - 1));
             }
         }
     }

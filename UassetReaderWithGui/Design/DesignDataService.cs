@@ -181,6 +181,12 @@ VTriggerVFxLists";
             uf.UnknownList1 = new UnknownList1Block { Items = new List<UnknownList1Item> { new UnknownList1Item { Id = 3, Name = "Name Example", Namespace = "Namespace Example", Size = 9999, PtrToContent = 0x6969 } } };
             uf.Imports = new ImportBlock { Items = new List<int> { 6, 9, 5, 2, 4, 1, 0, 10, 8, 23, 7 } };
 
+            // A UkDepends item is a string with an empty byte at the end. The following will accurately reproduce that.
+            var originalStringBytes = System.Text.Encoding.UTF8.GetBytes("/Game/Chara/KEN/Sound/KEN_BGM_CHA.KEN_BGM_CHA");
+            var desiredStringBytes = new byte[originalStringBytes.Length + 1];
+            originalStringBytes.CopyTo(desiredStringBytes, 0);
+            uf.UkDepends = new UkDepends { Items = new List<byte[]> { desiredStringBytes } };
+
             callback(uf, null);
         }
     }
