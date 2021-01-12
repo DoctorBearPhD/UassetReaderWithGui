@@ -82,6 +82,8 @@
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
+    <Compile Include="ViewModel\Controls\PointerListItemViewModel.cs" />
+    <Compile Include="ViewModel\Controls\PointerListViewModel.cs" />
     <Compile Include="ViewModel\Controls\TreeViewItemViewModel.cs" />
     <Compile Include="ViewModel\GuiViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

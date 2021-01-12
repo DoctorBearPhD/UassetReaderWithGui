@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using UassetLib;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
@@ -17,21 +16,17 @@ namespace UassetReaderWithGui.ViewModel
     /// </summary>
     public class GuiViewModel : ViewModelBase
     {
-        #region Exposed VM Properties
+        private IDataService _dataService;
 
-        private ObservableCollection<TreeViewItemViewModel> _treeViewItems;
-        public  ObservableCollection<TreeViewItemViewModel>  TreeViewItems { get => _treeViewItems; set => Set(ref _treeViewItems, value); }
+        #region Exposed VM Properties
 
         private UassetFileViewModel _uassetFileVM;
         public  UassetFileViewModel  UassetFileVM { get => _uassetFileVM; set => Set(ref _uassetFileVM, value); }
 
-        private ObservableCollection<StringListItemViewModel> _stringList;
-        public ObservableCollection<StringListItemViewModel> StringList { get => _stringList; set => Set(ref _stringList, value); }
+        private PointerListViewModel _pointerList;
+        public  PointerListViewModel  PointerList { get => _pointerList; set => Set(ref _pointerList, value); }
 
         #endregion
-
-
-        public IDataService _dataService;
 
 
         /// <summary>
@@ -41,47 +36,13 @@ namespace UassetReaderWithGui.ViewModel
         {
             _dataService = dataService;
 
-            ////dataService.GetData(
-            ////    (di, ex) => {
-            ////        TreeViewItems = new ObservableCollection<TreeViewItemViewModel>(
-            ////            di.Select( item => new TreeViewItemViewModel { Header = item.Title } )
-            ////        );
-            ////    } 
-            ////);
-
-            ////dataService.GetTreeViewData((items, ex) => { TreeViewItems = items; });
+            _dataService.GetUassetFile((uf, ex) => { UassetFileVM = new UassetFileViewModel(uf); });
 
 
-
-
-            // TODO: Get all parts of the UassetFile and show them.
-
-
-
-
-            //dataService.GetStructPropertyData(
-            //    (prop, ex) =>
-            //    {
-            //        TreeViewItems = GetTreeViewItems(prop);
-            //    }
-            //);
-
-            //_dataService = SimpleIoc.Default.GetInstance<IDataService>();
-
-            _dataService.GetStringListData(SetStringList);
+            PointerList = new PointerListViewModel(UassetFileVM);
         }
 
-        private void SetStringList(ObservableCollection<StringProperty> stringProperties, Exception ex)
-        {
-            StringList = new ObservableCollection<StringListItemViewModel>();
-
-            StringProperty prop;
-            for (var i = 0; i < stringProperties.Count; i++)
-            {
-                prop = stringProperties[i];
-                StringList.Add(new StringListItemViewModel(prop, i));
-            }
-        }
+        
 
         public ObservableCollection<TreeViewItemViewModel> GetTreeViewItems(UassetProperty prop)
         {
