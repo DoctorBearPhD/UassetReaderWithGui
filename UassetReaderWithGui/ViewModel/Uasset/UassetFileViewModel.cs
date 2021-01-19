@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UassetLib;
+using UassetReaderWithGui.ViewModel.Uasset.PropertyTypes;
 
 namespace UassetReaderWithGui.ViewModel.Uasset
 {
@@ -58,6 +59,9 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         private ObservableCollection<string> _UkDepends;
         public  ObservableCollection<string>  UkDepends { get => _UkDepends; set => Set(ref _UkDepends, value); }
 
+        private StructPropertyViewModel _ContentStruct;
+        public  StructPropertyViewModel  ContentStruct { get => _ContentStruct; set => Set(ref _ContentStruct, value); }
+
 
         // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
         /*
@@ -68,10 +72,6 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             
             
             public int Unknown1;
-            public int StringListCount;
-            public int UnknownList1Count;
-            public int DeclareCount;
-            public int UkDependsCount;
             public int ContentCount;
             public int Unknown2;
 
@@ -101,6 +101,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             SetUnknownList1(uf.UnknownList1);
             SetImportBlock(uf.Imports, uf.StringList);
             SetUkDepends(uf.UkDepends);
+
+            ContentStruct = new StructPropertyViewModel("<Main Content>", uf.ContentStruct);
         }
 
         private void SetStringList(ObservableCollection<StringProperty> stringProperties)

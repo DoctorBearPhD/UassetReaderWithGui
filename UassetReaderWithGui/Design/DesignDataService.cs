@@ -36,7 +36,7 @@ namespace UassetReaderWithGui.Design
                 new TreeViewItemViewModel("Design-time Item 2"),
                 new TreeViewItemViewModel("Design-time Item 3")
                 {
-                    Items = new ObservableCollection<TreeViewItemViewModel>
+                    Children = new ObservableCollection<TreeViewItemViewModel>
                     {
                         new TreeViewItemViewModel("Design-time Sub-item 1"),
                         new TreeViewItemViewModel("Design-time Sub-item 2"),
@@ -187,7 +187,28 @@ VTriggerVFxLists";
             originalStringBytes.CopyTo(desiredStringBytes, 0);
             uf.UkDepends = new UkDepends { Items = new List<byte[]> { desiredStringBytes } };
 
+            SetDesignContentStruct(ref uf);
+
             callback(uf, null);
+        }
+
+        private void SetDesignContentStruct(ref UassetFile uf)
+        {
+            uf.ContentCount = 1;
+
+            var contentValue = new Dictionary<string, object>
+            {
+                { "attr name 1", new StructProperty() },
+                { "attr name 2", new StructProperty() },
+                { "attr name 3", new StructProperty() }
+            };
+
+            var content = new StructProperty
+            {
+                Value = contentValue
+            };
+
+            uf.ContentStruct = content;
         }
     }
 }

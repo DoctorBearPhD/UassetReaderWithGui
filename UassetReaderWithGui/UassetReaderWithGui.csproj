@@ -85,12 +85,15 @@
     <Compile Include="ViewModel\Controls\PointerListItemViewModel.cs" />
     <Compile Include="ViewModel\Controls\PointerListViewModel.cs" />
     <Compile Include="ViewModel\Controls\TreeViewItemViewModel.cs" />
+    <Compile Include="ViewModel\Controls\TreeViewViewModel.cs" />
     <Compile Include="ViewModel\GuiViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MockGuiViewModel.cs" />
     <Compile Include="ViewModel\Uasset\DeclarationBlockViewModel.cs" />
     <Compile Include="ViewModel\Uasset\ImportBlockItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\StructPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\UassetPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\StringListItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\UassetFileViewModel.cs" />
     <Compile Include="ViewModel\Uasset\UnknownList1ItemViewModel.cs" />
@@ -103,6 +106,7 @@
     </Compile>
     <Compile Include="WpfUtil\Converters\IntToHexFormattedStringConverter.cs" />
     <Compile Include="WpfUtil\Converters\IntToHexStringConverter.cs" />
+    <Compile Include="WpfUtil\TreeViewDataTemplateSelector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,33 +1,28 @@
 ﻿using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace UassetReaderWithGui.ViewModel.Controls
 {
     /// <summary>
-    /// This class contains properties that a View can data bind to.
+    /// Represents an hierarchical TreeViewItem that can display and hold many types of objects. 
+    /// The items will be represented based on the DataItem's type (using the <see cref="WpfUtil.TreeViewDataTemplateSelector"/>)
     /// <para>
-    /// See http://www.mvvmlight.net
+    /// See https://wilberbeast.com/2010/08/24/wpf-mvvm-and-the-treeview-control-using-with-different-hierarchicaldatatemplates-and-datatemplateselector/
     /// </para>
     /// </summary>
     public class TreeViewItemViewModel : ViewModelBase
     {
-        private string _header;
-        public  string  Header { get => _header; set => Set(ref _header, value); }
+        public object DataItem { get; private set; }
 
-        private ObservableCollection<TreeViewItemViewModel> _items;
-        public  ObservableCollection<TreeViewItemViewModel>  Items { get => _items; set => Set(ref _items, value); }
+        public TreeViewItemViewModel Parent { get; set; }
+        
+        private ObservableCollection<TreeViewItemViewModel> _Children;
+        public  ObservableCollection<TreeViewItemViewModel>  Children { get => _Children; set => Set(ref _Children, value); }
 
-
-        /// <summary>
-        /// Initializes a new instance of the TreeViewItemViewModel class.
-        /// </summary>
-        public TreeViewItemViewModel()
+        public TreeViewItemViewModel(object dataItem)
         {
-        }
-
-        public TreeViewItemViewModel(string header)
-        {
-            Header = header;
+            DataItem = dataItem;
         }
     }
 }

@@ -1,13 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using System;
+using System.Collections;
 using System.Collections.ObjectModel;
-using System.Linq;
-using UassetLib;
+using System.Windows.Data;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
 using UassetReaderWithGui.ViewModel.Uasset;
-using UassetReaderWithGui.ViewModel.Uasset.PropertyTypes;
 
 namespace UassetReaderWithGui.ViewModel
 {
@@ -23,12 +21,12 @@ namespace UassetReaderWithGui.ViewModel
         private PointerListViewModel _pointerList;
         public  PointerListViewModel  PointerList { get => _pointerList; set => Set(ref _pointerList, value); }
 
+        private TreeViewViewModel _TreeViewModel;
+        public  TreeViewViewModel  TreeViewModel { get => _TreeViewModel; set => Set(ref _TreeViewModel, value); }
+
         #endregion
 
 
-        /// <summary>
-        /// Initializes a new instance of the MockGuiViewModel class.
-        /// </summary>
         public MockGuiViewModel()
         {
             _dataService = SimpleIoc.Default.GetInstance<IDataService>();
@@ -36,7 +34,10 @@ namespace UassetReaderWithGui.ViewModel
             _dataService.GetUassetFile( (uf, ex) => { UassetFileVM = new UassetFileViewModel(uf); } );
 
 
-            PointerList = new PointerListViewModel(UassetFileVM);
+            PointerList   = new PointerListViewModel(UassetFileVM);
+            TreeViewModel = new    TreeViewViewModel(UassetFileVM.ContentStruct);
         }
+
+        
     }
 }
