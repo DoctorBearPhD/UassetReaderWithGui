@@ -320,6 +320,17 @@
                         </StackPanel>
                     </HierarchicalDataTemplate>
                     
+                    <!-- String Property -->
+                    <DataTemplate x:Key="ItemTemplateStringProperty"
+                                              DataType="{x:Type vmpt:StringPropertyViewModel}">
+                        <TextBlock>
+                            "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />" (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)<LineBreak />
+                            <TextBlock Margin="10,0,0,0">
+                                Value: "<TextBlock Text="{Binding Path=DataItem.Value}" />"
+                            </TextBlock>
+                        </TextBlock>
+                    </DataTemplate>
+                    
                     <!-- Default Template -->
                     <DataTemplate x:Key="ItemTemplateDefault"
                                   DataType="{x:Type vmcon:TreeViewItemViewModel}">

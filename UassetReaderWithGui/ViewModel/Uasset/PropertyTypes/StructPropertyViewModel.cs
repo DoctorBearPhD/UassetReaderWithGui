@@ -35,14 +35,27 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         public StructPropertyViewModel(string attrName, StructProperty @struct) : this(attrName)
         {
             // convert StructProperty.Value's items to list of UassetPropertyViewModels
-            var structAttributes = @struct.Value.Keys.Where(key => { return @struct.Value[key] is UassetProperty; });
+            var structAttributes = @struct.Value.Keys.ToList();//.Where(key => { return @struct.Value[key] is UassetProperty; });
             var structVal = @struct.Value;
 
             object value;
 
-            foreach(var attr in structAttributes)
+            foreach (var attr in structAttributes)
             {
                 value = structVal[attr];
+
+                #region Special Cases
+
+                if (attr == "StringAssetReference")
+                {
+                    PropertyName = "Special StructProperty";
+                    Items.Add(new StringPropertyViewModel(attr, (string)value));
+
+                    continue;
+                }
+
+                #endregion (Special Cases)
+
 
                 if (value is StructProperty v)
                     Items.Add(new StructPropertyViewModel(attrName: attr, @struct: v));

@@ -8,8 +8,10 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
-    public class StringPropertyViewModel : ViewModelBase
+    public class StringPropertyViewModel : UassetPropertyViewModel
     {
+        new public const string PROPERTY_NAME = "StrProperty";
+
         private string _Value;
         public  string  Value { get => _Value; set => Set(ref _Value, value); }
 
@@ -18,7 +20,13 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         /// </summary>
         public StringPropertyViewModel(string val)
         {
+            PropertyName = PROPERTY_NAME;
             Value = val;
+        }
+
+        public StringPropertyViewModel(string attrName, string val) : this(val)
+        {
+            AttributeName = attrName;
         }
     }
 }
