@@ -290,30 +290,46 @@
                 
                 <!-- Item Data Templates -->
                 <TreeView.Resources>
+                    
                     <!-- Struct Property -->
                     <HierarchicalDataTemplate x:Key="ItemTemplateStructProperty"
                                               DataType="{x:Type vmcon:TreeViewItemViewModel}" 
                                               ItemsSource="{Binding Path=Children}">
                         <StackPanel Orientation="Vertical">
-                            <Label Background="Transparent" >
-                                <TextBlock>
-                                    <TextBlock Text="{Binding DataItem.PropertyName}" />
-                                    - "<TextBlock Text="{Binding DataItem.AttributeName}" />"
-                                </TextBlock>
-                            </Label>
+                            <TextBlock> 
+                                "<TextBlock Text="{Binding DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                            </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
+                    
+                    <!-- Array Property -->
+                    <HierarchicalDataTemplate x:Key="ItemTemplateArrayProperty"
+                                              DataType="{x:Type vmpt:ArrayPropertyViewModel}"
+                                              ItemsSource="{Binding Path=Children}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" FontStyle="Italic">
+                                Property Type of Items: <TextBlock Text="{Binding Path=DataItem.PropertyType}" />
+                                <LineBreak />
+                                # of Items: <TextBlock Text="{Binding Path=DataItem.Items.Count}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    
+                    <!-- Default Template -->
                     <DataTemplate x:Key="ItemTemplateDefault"
                                   DataType="{x:Type vmcon:TreeViewItemViewModel}">
                         <StackPanel Orientation="Vertical">
-                            <Label Background="Transparent" >
-                                <TextBlock>
-                                    <TextBlock Text="{Binding DataItem.PropertyName}" />
-                                    - "<TextBlock Text="{Binding DataItem.AttributeName}" />"
-                                </TextBlock>
-                            </Label>
+                            <TextBlock>
+                                "<TextBlock Text="{Binding DataItem.AttributeName}" />" (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                            </TextBlock>
                         </StackPanel>
                     </DataTemplate>
+                    
                 </TreeView.Resources>
                 
             </TreeView>

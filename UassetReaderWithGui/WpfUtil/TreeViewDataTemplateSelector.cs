@@ -29,6 +29,10 @@ namespace UassetReaderWithGui.WpfUtil
                     result = element.FindResource("ItemTemplateStructProperty") as DataTemplate;
                     break;
 
+                case ArrayPropertyViewModel arrayProperty:
+                    result = element.FindResource("ItemTemplateArrayProperty") as DataTemplate;
+                    break;
+
                 default:
                     result = element.FindResource("ItemTemplateDefault") as DataTemplate;
                     break;

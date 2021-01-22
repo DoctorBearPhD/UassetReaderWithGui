@@ -21,21 +21,36 @@ namespace UassetReaderWithGui.ViewModel.Controls
         {
             TreeViewItems = new ObservableCollection<TreeViewItemViewModel>();
 
-            var topLevelItem = new TreeViewItemViewModel(contentStructVm)   // top-level StructProperty
-            {
-                Children = GetTreeViewItemViewModels(contentStructVm.Items) // get children
-            }; 
+            var topLevelItem = new TreeViewItemViewModel(contentStructVm);   // top-level StructProperty
+            topLevelItem.Children = GetTreeViewItemViewModels(contentStructVm.Items, topLevelItem); // get children
+            
+
 
             TreeViewItems.Add(topLevelItem); // add top-level prop to tree
         }
         
-        public ObservableCollection<TreeViewItemViewModel> GetTreeViewItemViewModels(IEnumerable<object> items)
+        public ObservableCollection<TreeViewItemViewModel> GetTreeViewItemViewModels(IEnumerable<object> items, TreeViewItemViewModel parent)
         {
             var result = new ObservableCollection<TreeViewItemViewModel>();
 
+            TreeViewItemViewModel tvivm;
             foreach (var item in items)
             {
-                result.Add(new TreeViewItemViewModel(item));
+                tvivm = new TreeViewItemViewModel(dataItem: item)
+                {
+                    Parent = parent
+                };
+
+                if (item is StructPropertyViewModel structItem)
+                {
+                    tvivm.Children = GetTreeViewItemViewModels(structItem.Items, tvivm);
+                }
+                else if (item is ArrayPropertyViewModel arrayItem)
+                {
+                    tvivm.Children = GetTreeViewItemViewModels(arrayItem.Items, tvivm);
+                }
+
+                result.Add(tvivm);
             }
 
             return result;
