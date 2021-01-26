@@ -18,18 +18,9 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         public  ObservableCollection<dynamic>  Items { get => _Items; set => Set(ref _Items, value); }
 
 
-        /// <summary>
-        /// Initializes a new instance of the ArrayPropertyViewModel class.
-        /// </summary>
-        public ArrayPropertyViewModel()
+        public ArrayPropertyViewModel(string attrName) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
-            PropertyName = PROPERTY_NAME;
             Items = new ObservableCollection<dynamic>();
-        }
-
-        public ArrayPropertyViewModel(string attrName) : this()
-        {
-            AttributeName = attrName;
         }
 
         public ArrayPropertyViewModel(string attrName, ArrayProperty array) : this(attrName)

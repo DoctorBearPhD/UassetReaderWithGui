@@ -18,6 +18,9 @@
 
         <Style x:Key="treeViewItemStyle" TargetType="TreeViewItem">
             <Setter Property="IsExpanded" Value="True"/>
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="1" />
         </Style>
 
     </UserControl.Resources>
@@ -319,6 +322,41 @@
                             </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
+                    
+                    <!-- Bool Property -->
+                    <!-- Text Property -->
+                    
+                    <!-- Int Property -->
+                    <HierarchicalDataTemplate x:Key="ItemTemplateIntProperty"
+                                              DataType="{x:Type vmpt:IntPropertyViewModel}"
+                                              ItemsSource="{Binding Path=Children}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                Value: <TextBlock Text="{Binding Path=DataItem.Value}" /> (<TextBlock Text="{Binding Path=DataItem.Value, Converter={StaticResource int2FormattedHexConv}}" />)
+                            </TextBlock>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    
+                    <!-- Object Property -->
+                    <DataTemplate x:Key="ItemTemplateObjectProperty"
+                                              DataType="{x:Type vmpt:ObjectPropertyViewModel}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding DataItem.AttributeName}" />" (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="14,4,0,0" >
+                                <TextBlock Text="Value:" Margin="0,0,4,0" />
+                                <TextBlock>
+                                    <TextBlock Text="{Binding Path=DataItem.Id, Converter={StaticResource int2FormattedHexConv}}" />
+                                    = "<TextBlock Text="{Binding Path=DataItem.Name}" />"
+                                </TextBlock>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
                     
                     <!-- String Property -->
                     <DataTemplate x:Key="ItemTemplateStringProperty"

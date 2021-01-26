@@ -18,18 +18,9 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         public  ObservableCollection<UassetPropertyViewModel>  Items { get => _Items; set => Set(ref _Items, value); }
 
 
-        /// <summary>
-        /// Initializes a new instance of the StructViewModel class.
-        /// </summary>
-        public StructPropertyViewModel()
+        public StructPropertyViewModel(string attrName) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
-            PropertyName = PROPERTY_NAME;
             Items = new ObservableCollection<UassetPropertyViewModel>();
-        }
-
-        public StructPropertyViewModel(string attrName) : this()
-        {
-            AttributeName = attrName;
         }
 
         public StructPropertyViewModel(string attrName, StructProperty @struct) : this(attrName)
@@ -62,6 +53,12 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
                 else if (value is ArrayProperty a)
                     Items.Add(new ArrayPropertyViewModel(attrName: attr, array: a));
+
+                else if (value is IntProperty i)
+                    Items.Add(new IntPropertyViewModel(attrName: attr, prop: i));
+
+                else if (value is ObjectProperty o)
+                    Items.Add(new ObjectPropertyViewModel(attrName: attr, prop:o));
 
                 else if (value is UassetProperty)
                     Items.Add(new UassetPropertyViewModel(attrName: attr, propName: value.GetType().Name));

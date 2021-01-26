@@ -33,6 +33,14 @@ namespace UassetReaderWithGui.WpfUtil
                     result = element.FindResource("ItemTemplateArrayProperty") as DataTemplate;
                     break;
 
+                case IntPropertyViewModel intProperty:
+                    result = element.FindResource("ItemTemplateIntProperty") as DataTemplate;
+                    break;
+
+                case ObjectPropertyViewModel objectProperty:
+                    result = element.FindResource("ItemTemplateObjectProperty") as DataTemplate;
+                    break;
+
                 case StringPropertyViewModel stringProperty:
                     result = element.FindResource("ItemTemplateStringProperty") as DataTemplate;
                     break;
