@@ -45,12 +45,18 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
                     continue;
                 }
 
+                if (value is VectorStructProperty vsp)
+                {
+                    Items.Add(new VectorStructPropertyViewModel(attrName: attr, prop: vsp));
+                    continue;
+                }
+
                 #endregion (Special Cases)
 
 
                 if (value is StructProperty v)
                     Items.Add(new StructPropertyViewModel(attrName: attr, @struct: v));
-
+                
                 else if (value is ArrayProperty a)
                     Items.Add(new ArrayPropertyViewModel(attrName: attr, array: a));
 

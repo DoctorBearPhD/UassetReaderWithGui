@@ -15,6 +15,7 @@
     <UserControl.Resources>
         <converters:IntToHexStringConverter x:Key="int2HexConv" />
         <converters:IntToHexFormattedStringConverter x:Key="int2FormattedHexConv" />
+        <converters:FloatToHexFormattedStringConverter x:Key="float2FormattedHexConv" />
 
         <Style x:Key="treeViewItemStyle" TargetType="TreeViewItem">
             <Setter Property="IsExpanded" Value="True"/>
@@ -305,6 +306,23 @@
                             </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
+                    
+                    <!-- Vector/Rotator Struct Property -->
+                    <DataTemplate x:Key="ItemTemplateVectorStructProperty"
+                                  DataType="{x:Type vmpt:VectorStructPropertyViewModel}" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Text ="Value:" Margin="10,0,0,0"/>
+                            <TextBlock Margin="20,0,0,0" >
+                                X: <TextBlock Text="{Binding Path=DataItem.X}" /> (<TextBlock Text="{Binding Path=DataItem.X, Converter={StaticResource float2FormattedHexConv}}" />)<LineBreak/>
+                                Y: <TextBlock Text="{Binding Path=DataItem.Y}" /> (<TextBlock Text="{Binding Path=DataItem.Y, Converter={StaticResource float2FormattedHexConv}}" />)<LineBreak/>
+                                Z: <TextBlock Text="{Binding Path=DataItem.Z}" /> (<TextBlock Text="{Binding Path=DataItem.Z, Converter={StaticResource float2FormattedHexConv}}" />)
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
                     
                     <!-- Array Property -->
                     <HierarchicalDataTemplate x:Key="ItemTemplateArrayProperty"

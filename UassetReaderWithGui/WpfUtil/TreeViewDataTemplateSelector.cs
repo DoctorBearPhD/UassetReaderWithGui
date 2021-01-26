@@ -25,6 +25,15 @@ namespace UassetReaderWithGui.WpfUtil
             // TODO: determine result
             switch (tvItem.DataItem)
             {
+                // must check Special StructProperty`s first, since they derive from StructProperty
+                #region Special Cases
+
+                case VectorStructPropertyViewModel vectorStructProperty:
+                    result = element.FindResource("ItemTemplateVectorStructProperty") as DataTemplate;
+                    break;
+
+                #endregion (Special Cases)
+
                 case StructPropertyViewModel structProperty:
                     result = element.FindResource("ItemTemplateStructProperty") as DataTemplate;
                     break;
