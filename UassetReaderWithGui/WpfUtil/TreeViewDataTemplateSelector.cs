@@ -41,6 +41,14 @@ namespace UassetReaderWithGui.WpfUtil
                     result = element.FindResource("ItemTemplateObjectProperty") as DataTemplate;
                     break;
 
+                case BytePropertyViewModel byteProperty:
+                    // ByteProperty`s can be an array of bytes or an Enum. Show different templates based on whether it's an array or not.
+                    if (byteProperty.IsArrayOfBytes)
+                        result = element.FindResource("ItemTemplateArrayByteProperty") as DataTemplate;
+                    else
+                        result = element.FindResource("ItemTemplateEnumByteProperty") as DataTemplate;
+                    break;
+
                 case StringPropertyViewModel stringProperty:
                     result = element.FindResource("ItemTemplateStringProperty") as DataTemplate;
                     break;

@@ -92,6 +92,7 @@
     <Compile Include="ViewModel\Uasset\DeclarationBlockViewModel.cs" />
     <Compile Include="ViewModel\Uasset\ImportBlockItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\ArrayPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\BytePropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\IntPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\ObjectPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />

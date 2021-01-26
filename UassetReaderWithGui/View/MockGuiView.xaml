@@ -327,9 +327,8 @@
                     <!-- Text Property -->
                     
                     <!-- Int Property -->
-                    <HierarchicalDataTemplate x:Key="ItemTemplateIntProperty"
-                                              DataType="{x:Type vmpt:IntPropertyViewModel}"
-                                              ItemsSource="{Binding Path=Children}">
+                    <DataTemplate x:Key="ItemTemplateIntProperty"
+                                  DataType="{x:Type vmpt:IntPropertyViewModel}" >
                         <StackPanel Orientation="Vertical">
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
@@ -339,11 +338,11 @@
                                 Value: <TextBlock Text="{Binding Path=DataItem.Value}" /> (<TextBlock Text="{Binding Path=DataItem.Value, Converter={StaticResource int2FormattedHexConv}}" />)
                             </TextBlock>
                         </StackPanel>
-                    </HierarchicalDataTemplate>
+                    </DataTemplate>
                     
                     <!-- Object Property -->
                     <DataTemplate x:Key="ItemTemplateObjectProperty"
-                                              DataType="{x:Type vmpt:ObjectPropertyViewModel}">
+                                  DataType="{x:Type vmpt:ObjectPropertyViewModel}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock>
                                 "<TextBlock Text="{Binding DataItem.AttributeName}" />" (<TextBlock Text="{Binding DataItem.PropertyName}" />)
@@ -358,9 +357,40 @@
                         </StackPanel>
                     </DataTemplate>
                     
+                    <!-- Byte Property (Array) -->
+                    <DataTemplate x:Key="ItemTemplateArrayByteProperty"
+                                  DataType="{x:Type vmpt:BytePropertyViewModel}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" FontStyle="Italic" >
+                                Number of bytes: <TextBlock Text="{Binding Path=DataItem.ByteArrayValue.Length}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    
+                    <!-- Byte Property (Enum) -->
+                    <DataTemplate x:Key="ItemTemplateEnumByteProperty"
+                                  DataType="{x:Type vmpt:BytePropertyViewModel}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                Enum Category: <TextBlock Text="{Binding Path=DataItem.EnumCategory}" />
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                Enum Value: <TextBlock Text="{Binding Path=DataItem.EnumValue}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    
                     <!-- String Property -->
                     <DataTemplate x:Key="ItemTemplateStringProperty"
-                                              DataType="{x:Type vmpt:StringPropertyViewModel}">
+                                  DataType="{x:Type vmpt:StringPropertyViewModel}">
                         <TextBlock>
                             "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />" (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)<LineBreak />
                             <TextBlock Margin="10,0,0,0">

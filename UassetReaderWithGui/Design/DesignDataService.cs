@@ -10,6 +10,8 @@ namespace UassetReaderWithGui.Design
 {
     public class DesignDataService : IDataService
     {
+        private UassetFile uassetFile;
+
         public void SetArg(string arg) { }
 
         public void GetData(Action<ObservableCollection<DataItem>, Exception> callback)
@@ -163,6 +165,8 @@ VTriggerVFxLists";
 
         public void GetUassetFile(Action<UassetFile, Exception> callback)
         {
+            if (uassetFile != null) callback(uassetFile, null);
+
             var uf = new UassetFile();
 
             GetStringListData( (list, ex) => { uf.StringList = list; } );
@@ -187,9 +191,11 @@ VTriggerVFxLists";
             originalStringBytes.CopyTo(desiredStringBytes, 0);
             uf.UkDepends = new UkDepends { Items = new List<byte[]> { desiredStringBytes } };
 
-            SetDesignContentStruct(ref uf);
+            uassetFile = uf;
 
-            callback(uf, null);
+            SetDesignContentStruct(ref uassetFile);
+
+            callback(uassetFile, null);
         }
 
         private void SetDesignContentStruct(ref UassetFile uf)

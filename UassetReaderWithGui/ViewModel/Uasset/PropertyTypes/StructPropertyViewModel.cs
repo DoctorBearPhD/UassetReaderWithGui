@@ -58,7 +58,10 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
                     Items.Add(new IntPropertyViewModel(attrName: attr, prop: i));
 
                 else if (value is ObjectProperty o)
-                    Items.Add(new ObjectPropertyViewModel(attrName: attr, prop:o));
+                    Items.Add(new ObjectPropertyViewModel(attrName: attr, prop: o));
+
+                else if (value is ByteProperty byteProp)
+                    Items.Add(new BytePropertyViewModel(attrName: attr, prop: byteProp));
 
                 else if (value is UassetProperty)
                     Items.Add(new UassetPropertyViewModel(attrName: attr, propName: value.GetType().Name));
