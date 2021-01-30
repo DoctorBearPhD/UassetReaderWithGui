@@ -24,8 +24,6 @@ namespace UassetReaderWithGui.ViewModel.Controls
             var topLevelItem = new TreeViewItemViewModel(contentStructVm);   // top-level StructProperty
             topLevelItem.Children = GetTreeViewItemViewModels(contentStructVm.Items, topLevelItem); // get children
             
-
-
             TreeViewItems.Add(topLevelItem); // add top-level prop to tree
         }
         

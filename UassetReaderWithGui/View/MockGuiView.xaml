@@ -327,7 +327,7 @@
                     <!-- Array Property -->
                     <HierarchicalDataTemplate x:Key="ItemTemplateArrayProperty"
                                               DataType="{x:Type vmpt:ArrayPropertyViewModel}"
-                                              ItemsSource="{Binding Path=Children}">
+                                              ItemsSource="{Binding Path=Children}" >
                         <StackPanel Orientation="Vertical">
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
@@ -342,7 +342,34 @@
                     </HierarchicalDataTemplate>
                     
                     <!-- Bool Property -->
+                    <DataTemplate x:Key="ItemTemplateBoolProperty"
+                                  DataType="{x:Type vmpt:BoolPropertyViewModel}" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                Value: <TextBlock Text="{Binding Path=DataItem.Value}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    
                     <!-- Text Property -->
+                    <DataTemplate x:Key="ItemTemplateTextProperty"
+                                  DataType="{x:Type vmpt:TextPropertyViewModel}" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                ID: <TextBlock Text="{Binding Path=DataItem.Id}" /><LineBreak />
+                                UUID: "<TextBlock Text="{Binding Path=DataItem.Uuid}" />"<LineBreak />
+                                Content: "<TextBlock Text="{Binding Path=DataItem.Content}" />"
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
                     
                     <!-- Int Property -->
                     <DataTemplate x:Key="ItemTemplateIntProperty"
@@ -410,7 +437,8 @@
                     <DataTemplate x:Key="ItemTemplateStringProperty"
                                   DataType="{x:Type vmpt:StringPropertyViewModel}">
                         <TextBlock>
-                            "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />" (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)<LineBreak />
+                            "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                            (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)<LineBreak />
                             <TextBlock Margin="10,0,0,0">
                                 Value: "<TextBlock Text="{Binding Path=DataItem.Value}" />"
                             </TextBlock>

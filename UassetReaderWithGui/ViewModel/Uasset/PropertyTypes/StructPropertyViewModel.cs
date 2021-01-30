@@ -53,12 +53,18 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
                 #endregion (Special Cases)
 
-
+                // TODO: Add string, text, float, <others?>
                 if (value is StructProperty v)
                     Items.Add(new StructPropertyViewModel(attrName: attr, @struct: v));
-                
+
                 else if (value is ArrayProperty a)
                     Items.Add(new ArrayPropertyViewModel(attrName: attr, array: a));
+
+                else if (value is BoolProperty boolProp)
+                    Items.Add(new BoolPropertyViewModel(attrName: attr, prop: boolProp));
+
+                else if (value is TextProperty t)
+                    Items.Add(new TextPropertyViewModel(attrName: attr, prop: t));
 
                 else if (value is IntProperty i)
                     Items.Add(new IntPropertyViewModel(attrName: attr, prop: i));
@@ -68,6 +74,9 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
                 else if (value is ByteProperty byteProp)
                     Items.Add(new BytePropertyViewModel(attrName: attr, prop: byteProp));
+
+                else if (value is StringProperty s)
+                    Items.Add(new StringPropertyViewModel(attrName: attr, prop: s));
 
                 else if (value is UassetProperty)
                     Items.Add(new UassetPropertyViewModel(attrName: attr, propName: value.GetType().Name));

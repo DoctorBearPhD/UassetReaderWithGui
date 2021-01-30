@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using UassetReaderWithGui.ViewModel.Controls;
 using UassetReaderWithGui.ViewModel.Uasset.PropertyTypes;
@@ -22,7 +17,7 @@ namespace UassetReaderWithGui.WpfUtil
                )
                 return base.SelectTemplate(item, container);
 
-            // TODO: determine result
+            // TODO: Add bool, text, float, <others?>
             switch (tvItem.DataItem)
             {
                 // must check Special StructProperty`s first, since they derive from StructProperty
@@ -40,6 +35,14 @@ namespace UassetReaderWithGui.WpfUtil
 
                 case ArrayPropertyViewModel arrayProperty:
                     result = element.FindResource("ItemTemplateArrayProperty") as DataTemplate;
+                    break;
+
+                case BoolPropertyViewModel boolProperty:
+                    result = element.FindResource("ItemTemplateBoolProperty") as DataTemplate;
+                    break;
+
+                case TextPropertyViewModel textProperty:
+                    result = element.FindResource("ItemTemplateTextProperty") as DataTemplate;
                     break;
 
                 case IntPropertyViewModel intProperty:

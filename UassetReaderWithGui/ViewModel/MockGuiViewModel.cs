@@ -1,8 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Windows.Data;
 using UassetReaderWithGui.Model;
 using UassetReaderWithGui.ViewModel.Controls;
 using UassetReaderWithGui.ViewModel.Uasset;

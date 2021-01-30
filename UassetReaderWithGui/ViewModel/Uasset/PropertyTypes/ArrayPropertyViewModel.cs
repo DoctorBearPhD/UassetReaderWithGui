@@ -1,10 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using UassetLib;
 
 namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 {
-    // TODO
     public class ArrayPropertyViewModel : UassetPropertyViewModel
     {
         new public const string PROPERTY_NAME = "ArrayProperty";
@@ -36,6 +34,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
             {
                 arrayItemName = $"[Item {array.Items.IndexOf(item)}]";
 
+                // TODO: Add string, text, float, <others?>
                 switch (item)
                 {
                     case StructProperty structProp:
@@ -44,6 +43,30 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
                     case ArrayProperty arrayProp:
                         itemVm = new ArrayPropertyViewModel(arrayItemName, arrayProp);
+                        break;
+
+                    case BoolProperty boolProp:
+                        itemVm = new BoolPropertyViewModel(arrayItemName, boolProp);
+                        break;
+
+                    case TextProperty t:
+                        itemVm = new TextPropertyViewModel(attrName:arrayItemName, prop:t);
+                        break;
+
+                    case IntProperty intProp:
+                        itemVm = new IntPropertyViewModel(attrName: arrayItemName, prop: intProp);
+                        break;
+
+                    case ObjectProperty objectProp:
+                        itemVm = new ObjectPropertyViewModel(attrName: arrayItemName, prop: objectProp);
+                        break;
+
+                    case ByteProperty byteProp:
+                        itemVm = new BytePropertyViewModel(attrName: arrayItemName, prop: byteProp);
+                        break;
+
+                    case StringProperty s:
+                        itemVm = new StringPropertyViewModel(attrName: arrayItemName, prop: s);
                         break;
 
                     default:

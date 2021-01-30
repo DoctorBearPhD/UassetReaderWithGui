@@ -12,8 +12,9 @@ namespace UassetReaderWithGui
     {
 #if DEBUG
         public string executingAssembly = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        public string tempFileName = 
-            "DA_KEN_Setup";
+        public string tempFileName =
+            //"old_reader_stuff\\ExtraGauge";
+            "RYU_CommandList_2020";
         public string TEMP_FILEPATH => executingAssembly + "\\test_stuff\\" + tempFileName + ".uasset";
 #endif
 

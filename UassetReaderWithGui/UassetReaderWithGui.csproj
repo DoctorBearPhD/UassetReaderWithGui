@@ -92,11 +92,13 @@
     <Compile Include="ViewModel\Uasset\DeclarationBlockViewModel.cs" />
     <Compile Include="ViewModel\Uasset\ImportBlockItemViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\ArrayPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\BoolPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\BytePropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\IntPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\ObjectPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\StringPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\StructPropertyViewModel.cs" />
+    <Compile Include="ViewModel\Uasset\PropertyTypes\TextPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\UassetPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\PropertyTypes\VectorStructPropertyViewModel.cs" />
     <Compile Include="ViewModel\Uasset\StringListItemViewModel.cs" />
@@ -167,14 +169,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterResolveReferences">
+  <Target Name="AfterResolveReferences" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <ItemGroup>
       <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
         <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
       </EmbeddedResource>
     </ItemGroup>
   </Target>
-  <Target AfterTargets="AfterBuild" Name="CleanReferenceCopyLocalPaths">
+  <Target AfterTargets="AfterBuild" Name="CleanReferenceCopyLocalPaths" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
   </Target>
 </Project>

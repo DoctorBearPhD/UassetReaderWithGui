@@ -1,5 +1,4 @@
 ﻿using GalaSoft.MvvmLight;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UassetLib;
 using UassetReaderWithGui.ViewModel.Uasset.PropertyTypes;
