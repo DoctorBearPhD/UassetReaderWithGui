@@ -1,6 +1,5 @@
 ﻿namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 {
-    //TODO: Conform this to the other Property VMs' style, and make a separate VM for things like the "StringAssetReference" special case.
     public class StringPropertyViewModel : UassetPropertyViewModel
     {
         new public const string PROPERTY_NAME = "StrProperty";

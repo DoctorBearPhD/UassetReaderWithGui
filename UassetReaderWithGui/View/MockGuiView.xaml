@@ -384,7 +384,21 @@
                             </TextBlock>
                         </StackPanel>
                     </DataTemplate>
-                    
+
+                    <!-- Float Property -->
+                    <DataTemplate x:Key="ItemTemplateFloatProperty"
+                                  DataType="{x:Type vmpt:FloatPropertyViewModel}" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock>
+                                "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            </TextBlock>
+                            <TextBlock Margin="10,0,0,0" >
+                                Value: <TextBlock Text="{Binding Path=DataItem.Value}" /> (<TextBlock Text="{Binding Path=DataItem.Value, Converter={StaticResource float2FormattedHexConv}}" />)
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+
                     <!-- Object Property -->
                     <DataTemplate x:Key="ItemTemplateObjectProperty"
                                   DataType="{x:Type vmpt:ObjectPropertyViewModel}">

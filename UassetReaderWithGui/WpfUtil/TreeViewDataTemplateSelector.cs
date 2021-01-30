@@ -17,7 +17,6 @@ namespace UassetReaderWithGui.WpfUtil
                )
                 return base.SelectTemplate(item, container);
 
-            // TODO: Add bool, text, float, <others?>
             switch (tvItem.DataItem)
             {
                 // must check Special StructProperty`s first, since they derive from StructProperty
@@ -47,6 +46,10 @@ namespace UassetReaderWithGui.WpfUtil
 
                 case IntPropertyViewModel intProperty:
                     result = element.FindResource("ItemTemplateIntProperty") as DataTemplate;
+                    break;
+
+                case FloatPropertyViewModel floatProperty:
+                    result = element.FindResource("ItemTemplateFloatProperty") as DataTemplate;
                     break;
 
                 case ObjectPropertyViewModel objectProperty:

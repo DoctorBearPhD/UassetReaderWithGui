@@ -34,7 +34,6 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
             {
                 arrayItemName = $"[Item {array.Items.IndexOf(item)}]";
 
-                // TODO: Add string, text, float, <others?>
                 switch (item)
                 {
                     case StructProperty structProp:
@@ -49,12 +48,16 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
                         itemVm = new BoolPropertyViewModel(arrayItemName, boolProp);
                         break;
 
-                    case TextProperty t:
-                        itemVm = new TextPropertyViewModel(attrName:arrayItemName, prop:t);
+                    case TextProperty textProp:
+                        itemVm = new TextPropertyViewModel(attrName:arrayItemName, prop:textProp);
                         break;
 
                     case IntProperty intProp:
                         itemVm = new IntPropertyViewModel(attrName: arrayItemName, prop: intProp);
+                        break;
+
+                    case FloatProperty floatProp:
+                        itemVm = new FloatPropertyViewModel(attrName: arrayItemName, prop: floatProp);
                         break;
 
                     case ObjectProperty objectProp:
@@ -65,8 +68,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
                         itemVm = new BytePropertyViewModel(attrName: arrayItemName, prop: byteProp);
                         break;
 
-                    case StringProperty s:
-                        itemVm = new StringPropertyViewModel(attrName: arrayItemName, prop: s);
+                    case StringProperty stringProp:
+                        itemVm = new StringPropertyViewModel(attrName: arrayItemName, prop: stringProp);
                         break;
 
                     default:

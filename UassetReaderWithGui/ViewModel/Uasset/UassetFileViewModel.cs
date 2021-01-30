@@ -62,25 +62,16 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         public  StructPropertyViewModel  ContentStruct { get => _ContentStruct; set => Set(ref _ContentStruct, value); }
 
 
-        // Create ViewModel for each Model? (UassetFileVM, DeclarationBlockVM, StructPropertyVM, etc)
+        // TODO: When you can find a file with UkLoads, add a viewer for it.
         /*
             // public __?__ UkLoads { get; set; }
 
-            public StructProperty ContentStruct { get; set; }
-
-            
-            
             public int Unknown1;
             public int ContentCount;
             public int Unknown2;
 
             public byte[] Checksum;
             public byte[] FooterBytes;
-         */
-
-        /*
-            
-
          */
 
         public UassetFileViewModel(UassetFile uf)
