@@ -16,6 +16,8 @@
 
         public TextPropertyViewModel(string attrName, UassetLib.TextProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             Id      = prop.Id;
             Uuid    = prop.Uuid;
             Content = prop.Content;

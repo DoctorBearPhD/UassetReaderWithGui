@@ -18,6 +18,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
         public VectorStructPropertyViewModel(string attrName, VectorStructProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             X = prop.X;
             Y = prop.Y;
             Z = prop.Z;

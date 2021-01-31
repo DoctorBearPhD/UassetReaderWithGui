@@ -22,6 +22,8 @@
         /// </summary>
         public StringPropertyViewModel(string attrName, UassetLib.StringProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             Value = prop.Value;
         }
 

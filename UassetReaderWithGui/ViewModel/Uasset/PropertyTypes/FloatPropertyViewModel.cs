@@ -9,6 +9,8 @@
 
         public FloatPropertyViewModel(string attrName, UassetLib.FloatProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             Value = prop.Value;
         }
     }

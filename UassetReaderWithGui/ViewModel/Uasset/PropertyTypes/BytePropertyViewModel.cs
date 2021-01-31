@@ -22,6 +22,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
         public BytePropertyViewModel(string attrName, UassetLib.ByteProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             IsArrayOfBytes = prop.IsArrayOfBytes;
 
             if (IsArrayOfBytes)

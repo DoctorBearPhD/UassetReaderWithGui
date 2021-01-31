@@ -10,6 +10,8 @@
 
         public BoolPropertyViewModel(string attrName, UassetLib.BoolProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             Value = prop.Value;
         }
     }

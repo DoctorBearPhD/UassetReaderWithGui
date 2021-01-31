@@ -15,6 +15,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
         public ObjectPropertyViewModel(string attrName, UassetLib.ObjectProperty prop) : base(propName: PROPERTY_NAME, attrName: attrName)
         {
+            Address = (int)prop.Address;
+
             Id = prop.Id;
             Name = prop.Name;
         }

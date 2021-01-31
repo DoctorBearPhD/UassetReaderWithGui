@@ -11,9 +11,6 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
     {
         new public const string PROPERTY_NAME = "StructProperty";
 
-        private int _Address;
-        public  int  Address { get => _Address; set => Set(ref _Address, value); }
-
         private ObservableCollection<UassetPropertyViewModel> _Items;
         public  ObservableCollection<UassetPropertyViewModel>  Items { get => _Items; set => Set(ref _Items, value); }
 
@@ -25,6 +22,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
         public StructPropertyViewModel(string attrName, StructProperty @struct) : this(attrName)
         {
+            Address = (int)@struct.Address;
+
             // convert StructProperty.Value's items to list of UassetPropertyViewModels
             var structAttributes = @struct.Value.Keys.ToList();//.Where(key => { return @struct.Value[key] is UassetProperty; });
             var structVal = @struct.Value;

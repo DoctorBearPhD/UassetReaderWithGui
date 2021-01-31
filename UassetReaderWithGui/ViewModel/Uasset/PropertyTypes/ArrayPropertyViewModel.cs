@@ -25,6 +25,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         {
             // convert ArrayProperty to ViewModel
 
+            Address = (int)array.Address;
+
             PropertyType = array.PropertyType;
 
             UassetPropertyViewModel itemVm;

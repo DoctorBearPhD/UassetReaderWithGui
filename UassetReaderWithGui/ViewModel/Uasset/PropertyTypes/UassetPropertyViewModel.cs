@@ -17,6 +17,9 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
         private string _AttributeName = "<Attribute Name>";
         public  string  AttributeName { get => _AttributeName; set => Set(ref _AttributeName, value); }
 
+        private int _Address;
+        public  int  Address { get => _Address; set => Set(ref _Address, value); }
+
 
         public UassetPropertyViewModel() { }
 

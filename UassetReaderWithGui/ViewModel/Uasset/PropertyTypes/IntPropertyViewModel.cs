@@ -15,6 +15,8 @@ namespace UassetReaderWithGui.ViewModel.Uasset.PropertyTypes
 
         public IntPropertyViewModel(string attrName, UassetLib.IntProperty prop) : base(attrName: attrName, propName: PROPERTY_NAME)
         {
+            Address = (int)prop.Address;
+
             Value = prop.Value;
         }
     }

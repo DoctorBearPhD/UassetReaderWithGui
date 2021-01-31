@@ -300,9 +300,10 @@
                                               DataType="{x:Type vmcon:TreeViewItemViewModel}" 
                                               ItemsSource="{Binding Path=Children}">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock> 
+                            <TextBlock FontWeight="Bold"> 
                                 "<TextBlock Text="{Binding DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
@@ -311,9 +312,10 @@
                     <DataTemplate x:Key="ItemTemplateVectorStructProperty"
                                   DataType="{x:Type vmpt:VectorStructPropertyViewModel}" >
                         <StackPanel Orientation="Vertical">
-                            <TextBlock>
+                            <TextBlock FontWeight="Bold">
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Text ="Value:" Margin="10,0,0,0"/>
                             <TextBlock Margin="20,0,0,0" >
@@ -329,9 +331,10 @@
                                               DataType="{x:Type vmpt:ArrayPropertyViewModel}"
                                               ItemsSource="{Binding Path=Children}" >
                         <StackPanel Orientation="Vertical">
-                            <TextBlock>
+                            <TextBlock FontWeight="Bold">
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" FontStyle="Italic">
                                 Property Type of Items: <TextBlock Text="{Binding Path=DataItem.PropertyType}" />
@@ -348,6 +351,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" >
                                 Value: <TextBlock Text="{Binding Path=DataItem.Value}" />
@@ -362,6 +366,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" >
                                 ID: <TextBlock Text="{Binding Path=DataItem.Id}" /><LineBreak />
@@ -378,6 +383,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" >
                                 Value: <TextBlock Text="{Binding Path=DataItem.Value}" /> (<TextBlock Text="{Binding Path=DataItem.Value, Converter={StaticResource int2FormattedHexConv}}" />)
@@ -392,6 +398,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" >
                                 Value: <TextBlock Text="{Binding Path=DataItem.Value}" /> (<TextBlock Text="{Binding Path=DataItem.Value, Converter={StaticResource float2FormattedHexConv}}" />)
@@ -404,7 +411,9 @@
                                   DataType="{x:Type vmpt:ObjectPropertyViewModel}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock>
-                                "<TextBlock Text="{Binding DataItem.AttributeName}" />" (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                                "<TextBlock Text="{Binding DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="14,4,0,0" >
                                 <TextBlock Text="Value:" Margin="0,0,4,0" />
@@ -423,6 +432,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" FontStyle="Italic" >
                                 Number of bytes: <TextBlock Text="{Binding Path=DataItem.ByteArrayValue.Length}" />
@@ -437,6 +447,7 @@
                             <TextBlock>
                                 "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
                                 (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                             <TextBlock Margin="10,0,0,0" >
                                 Enum Category: <TextBlock Text="{Binding Path=DataItem.EnumCategory}" />
@@ -452,7 +463,8 @@
                                   DataType="{x:Type vmpt:StringPropertyViewModel}">
                         <TextBlock>
                             "<TextBlock Text="{Binding Path=DataItem.AttributeName}" />"
-                            (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)<LineBreak />
+                            (<TextBlock Text="{Binding Path=DataItem.PropertyName}" />)
+                            [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]<LineBreak />
                             <TextBlock Margin="10,0,0,0">
                                 Value: "<TextBlock Text="{Binding Path=DataItem.Value}" />"
                             </TextBlock>
@@ -464,7 +476,9 @@
                                   DataType="{x:Type vmcon:TreeViewItemViewModel}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock>
-                                "<TextBlock Text="{Binding DataItem.AttributeName}" />" (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                                "<TextBlock Text="{Binding DataItem.AttributeName}" />"
+                                (<TextBlock Text="{Binding DataItem.PropertyName}" />)
+                                [@<TextBlock Text="{Binding Path=DataItem.Address, Converter={StaticResource int2HexConv}}" />]
                             </TextBlock>
                         </StackPanel>
                     </DataTemplate>
