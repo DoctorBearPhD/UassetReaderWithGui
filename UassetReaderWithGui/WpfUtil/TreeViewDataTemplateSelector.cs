@@ -26,6 +26,10 @@ namespace UassetReaderWithGui.WpfUtil
                     result = element.FindResource("ItemTemplateVectorStructProperty") as DataTemplate;
                     break;
 
+                case ColorStructPropertyViewModel colorStructProperty:
+                    result = element.FindResource("ItemTemplateColorStructProperty") as DataTemplate;
+                    break;
+
                 #endregion (Special Cases)
 
                 case StructPropertyViewModel structProperty:

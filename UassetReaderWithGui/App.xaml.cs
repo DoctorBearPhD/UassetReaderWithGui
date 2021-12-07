@@ -37,7 +37,7 @@ namespace UassetReaderWithGui
 
     }
 
-    public class PackagedProgram
+    public static class PackagedProgram
     {
         [STAThread]
         public static void Main()

@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1145
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UassetReaderWithGui", "UassetReaderWithGui\UassetReaderWithGui.csproj", "{39EC5338-4A0B-48DC-ABEA-376E5B759DF1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91C5058C-7030-4C12-B770-E95C78F155BE} = {91C5058C-7030-4C12-B770-E95C78F155BE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UassetLib", "..\UassetLib\UassetLib\UassetLib.csproj", "{91C5058C-7030-4C12-B770-E95C78F155BE}"
 EndProject
