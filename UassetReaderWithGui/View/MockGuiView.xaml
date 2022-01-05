@@ -241,7 +241,7 @@
                                         AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeRows="False" IsReadOnly="True">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding ItemAsInt, Converter={StaticResource int2FormattedHexConv}}" />
-                                        <DataGridTextColumn Header="StringList Value" Binding="{Binding ItemAsString}" />
+                                        <DataGridTextColumn Header="Declaration Block Value" Binding="{Binding ItemAsString}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>

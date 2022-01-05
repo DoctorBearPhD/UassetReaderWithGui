@@ -89,7 +89,7 @@ namespace UassetReaderWithGui.ViewModel.Uasset
 
             DeclarationBlock = new DeclarationBlockViewModel(uf.Declaration);
             SetUnknownList1(uf.UnknownList1);
-            SetImportBlock(uf.Imports, uf.StringList);
+            SetImportBlock(uf.Imports, uf.Declaration);
             SetUkDepends(uf.UkDepends);
 
             ContentStruct = new StructPropertyViewModel("<Main Content>", uf.ContentStruct);
@@ -117,13 +117,13 @@ namespace UassetReaderWithGui.ViewModel.Uasset
             }
         }
 
-        private void SetImportBlock(ImportBlock imports, ObservableCollection<StringProperty> stringList)
+        private void SetImportBlock(ImportBlock imports, DeclarationBlock declaration)
         {
             ImportBlock = new ObservableCollection<ImportBlockItemViewModel>();
 
             foreach (var item in imports.Items)
             {
-                ImportBlock.Add(new ImportBlockItemViewModel(item, stringList));
+                ImportBlock.Add(new ImportBlockItemViewModel(item, declaration));
             }
         }
 

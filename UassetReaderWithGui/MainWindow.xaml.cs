@@ -15,8 +15,8 @@ namespace UassetReaderWithGui
         public string tempFileName =
             //"old_reader_stuff\\ExtraGauge";
             //"RYU_CommandList_2020";
-            //"DA_Z0A_VS2";
-            "BP_CharaSelectActor";
+            "DA_Z0A_VS2";
+            //"BP_CharaSelectActor";
         public string TEMP_FILEPATH => executingAssembly + "\\test_stuff\\" + tempFileName + ".uasset";
 #endif
 
