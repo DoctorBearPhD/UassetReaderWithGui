@@ -12,10 +12,10 @@ namespace UassetReaderWithGui.ViewModel.Uasset
         public  string  ItemAsString { get => _ItemAsString; set => Set(ref _ItemAsString, value); }
 
 
-        public ImportBlockItemViewModel(int item, UassetLib.DeclarationBlock declaration)
+        public ImportBlockItemViewModel(int item, string name)
         {
             ItemAsInt = item;
-            ItemAsString = declaration.Items[ItemAsInt].Name;
+            ItemAsString = name;
         }
     }
 }
